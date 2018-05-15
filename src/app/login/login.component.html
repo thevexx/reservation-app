@@ -1,0 +1,11 @@
+<form [formGroup]="loginForm" (ngSubmit)="btnLogin(loginForm)">
+
+  login : <input type="text" formControlName="email" ><br>
+  <p *ngIf="loginForm.controls['email'].hasError()" >invalid email</p>
+  Password : <input type="password" formControlName="password"><br>
+
+  <input type="submit"  name="Connect" [disabled]="loginForm.invalid">
+
+  <h2 *ngIf="errMessage"> {{ errMessage }} </h2>
+
+</form>
