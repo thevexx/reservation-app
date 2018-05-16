@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import * as jwt from 'angular2-jwt-simple';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,7 @@ export class LoginComponent implements OnInit {
   errMessage;
   loginForm: FormGroup;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
 
   ngOnInit() {
@@ -31,6 +33,12 @@ export class LoginComponent implements OnInit {
       console.log(res.json().message);
       if (res.json().message === 'ok') {
         localStorage.setItem('token', res.json().token);
+        const role = jwt.decode(localStorage.getItem('token'), 'my_pass').role;
+        if (role === 'admin') {
+          this.router.navigateByUrl('reservations');
+        } else if (role === 'user') {
+          this.router.navigateByUrl('home');
+        }
       } else {
         this.errMessage = res.json().message;
       }
