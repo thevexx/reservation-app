@@ -20,6 +20,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
+
   BtnAddAdminUser(f) {
     f.value['role'] = 'admin';
     this.authService.getregister(f.value).subscribe( res => {
