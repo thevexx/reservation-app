@@ -9,6 +9,11 @@ export class MenuAdminComponent implements OnInit {
 
   constructor() { }
 
+
+  events: string[] = ['reservation', 'Ecrans', 'Utilisateurs'];
+  opened: boolean;
+
+  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
   ngOnInit() {
   }
 

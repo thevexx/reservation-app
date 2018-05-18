@@ -1,3 +1,41 @@
-<p>
-  menu-admin works!
-</p>
+<button mat-button [matMenuTriggerFor]="rootMenu">
+    Menu
+  </button>
+
+<mat-menu #rootMenu="matMenu">
+  <button mat-menu-item>Réservations</button>
+  <button mat-menu-item>Ecrans</button>
+  <button mat-menu-item>Utilisateurs</button>
+</mat-menu>
+
+
+    <!-- <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <span>Reservations</span>
+      </mat-toolbar-row>
+
+      <mat-toolbar-row>
+        <span>Ecrans</span>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+        <span>Utilisateurs</span>
+      </mat-toolbar-row>
+    </mat-toolbar> -->
+
+
+    <!--
+      <mat-sidenav >
+        <mat-toolbar color="primary">
+        <mat-toolbar-row>
+          <span>Reservations</span>
+        </mat-toolbar-row>
+
+        <mat-toolbar-row>
+          <span>Ecrans</span>
+        </mat-toolbar-row>
+        <mat-toolbar-row>
+          <span>Utilisateurs</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      </mat-sidenav>
+ -->

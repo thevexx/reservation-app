@@ -1,16 +1,39 @@
-<form [formGroup]="loginForm" (ngSubmit)="btnLogin(loginForm)">
+<div class="basic-container">
+  <div class="form-container">
 
-  login : <input type="text" formControlName="email" ><br>
-  <!-- <p *ngIf="loginForm.controls['email'].hasError()" >invalid email</p> -->
-  Password : <input type="password" formControlName="password"><br>
+    <form [formGroup]="loginForm" (ngSubmit)="btnLogin(loginForm)">
+      <mat-card>
+        <mat-card-header>
+          <h1 class="title">
+            login </h1>
+        </mat-card-header>
+        <div class="inputform">
 
-  <input type="submit"  name="Connect" [disabled]="loginForm.invalid">
+          <!-- <mat-input-container floatPlaceholder="auto"> -->
+            <mat-form-field>
 
-  <h2 *ngIf="errMessage"> {{ errMessage }} </h2>
+            <input matInput formControlName="email" type="text" required placeholder="email">
+            </mat-form-field>
+          <!-- </mat-input-container> -->
+          <!-- <p *ngIf="loginForm.controls['email'].hasError()" >invalid email</p> -->
+          <mat-form-field floatPlaceholder="auto">
+            <input matInput formControlName="password" type="password" required placeholder="password">
+          </mat-form-field>
 
+          <input type="submit" name="Connect" [disabled]="loginForm.invalid">
 
-</form>
+          <h2 *ngIf="errMessage"> {{ errMessage }} </h2>
 
+          <!-- <mat-error *ngIf="errMessage">{{errMessage}}</mat-error> -->
+          <div class="button-row">
+            <button mat-raised-button type="reset" routerLink="/register">Register</button>
+            <button mat-raised-button color="primary" type="submit">Login</button>
+          </div>
+        </div>
+      </mat-card>
+    </form>
+  </div>
+</div>
 <!--
 git add .
 git commit -m "my changes"

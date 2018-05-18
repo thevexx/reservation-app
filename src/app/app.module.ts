@@ -21,6 +21,11 @@ import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { OffresComponent } from './admin/offres/offres.component';
 import { UsersComponent } from './admin/users/users.component';
 
+ import { EcranService } from './ecran.service';
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,9 +45,11 @@ import { UsersComponent } from './admin/users/users.component';
     AppRoutingModule,
     HttpModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
-  providers: [AuthService, AuthGuard, RoleGuard],
+  providers: [AuthService, AuthGuard, RoleGuard, EcranService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

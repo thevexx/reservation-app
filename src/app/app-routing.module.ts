@@ -8,6 +8,8 @@ import { EcransComponent } from './admin/ecrans/ecrans.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
 import { UsersComponent } from './admin/users/users.component';
+import { ListComponent } from './user/list/list.component';
+import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 
 const routes: Routes = [{
   path: 'register',
@@ -37,6 +39,14 @@ const routes: Routes = [{
 {
   path: 'users',
   component: UsersComponent
+},
+{
+  path: 'list',
+  component: ListComponent
+},
+{
+  path: 'menu-admin',
+  component: MenuAdminComponent
 },
 {
   path: '**',
