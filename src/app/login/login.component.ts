@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../services/auth.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import * as jwt from 'angular2-jwt-simple';
 import { Router } from '@angular/router';
@@ -34,11 +34,13 @@ export class LoginComponent implements OnInit {
       if (res.json().message === 'ok') {
         localStorage.setItem('token', res.json().token);
         const role = jwt.decode(localStorage.getItem('token'), 'my_pass').role;
+        console.log(role);
         if (role === 'admin') {
           this.router.navigateByUrl('reservations');
         } else if (role === 'user') {
           this.router.navigateByUrl('home');
         }
+
       } else {
         this.errMessage = res.json().message;
       }

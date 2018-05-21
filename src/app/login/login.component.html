@@ -20,14 +20,14 @@
             <input matInput formControlName="password" type="password" required placeholder="password">
           </mat-form-field>
 
-          <input type="submit" name="Connect" [disabled]="loginForm.invalid">
+          <!-- <input type="submit" name="Connect" > -->
 
           <h2 *ngIf="errMessage"> {{ errMessage }} </h2>
 
           <!-- <mat-error *ngIf="errMessage">{{errMessage}}</mat-error> -->
           <div class="button-row">
             <button mat-raised-button type="reset" routerLink="/register">Register</button>
-            <button mat-raised-button color="primary" type="submit">Login</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
           </div>
         </div>
       </mat-card>

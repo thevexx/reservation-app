@@ -1,57 +1,18 @@
-<div class="container">
-  <h3>Employee List</h3>
-   <table class="table table-condensed">
-     <thead>
-       <tr>
-         <td>    </td>
-         <td>     </td>
-         <td>     </td>
-         <td>     </td>
-         <td>  <a (click)="ShowRegForm(e)">Add New</a></td>
-       </tr>
-       <tr>
-         <th>ID</th>
-         <th>First Name</th>
-         <th>Last Name</th>
-         <th>Email</th>
-         <th>Edit</th>
-       </tr>
-     </thead>
-     <tbody>
-       <tr class="success" *ngFor="let e of employeelist ">
-         <td> {{e.id}}</td>
-         <td>{{e.fname}}</td>
-         <td>{{e.lname}}</td>
-         <td>{{e.email}}</td>
-         <td><a (click)="ShowRegForm(e)">Edit</a></td>
-         <td><a (click)="ShowRegFormForDelete(e)">Delete</a></td>
-       </tr>
-     </tbody>
-   </table>
- </div>
- <hr >
- <form #regForm="ngForm">
- <div class="container" *ngIf="editCustomer">
-  <h3>{{FormHeader}}</h3>
-   <table class="table table-condensed">
-     <tbody>
-       <tr>
-         <td>First Name</td>
-         <td><input type="text" name="fname"  ></td>
-       </tr>
-       <tr>
-         <td>Last Name</td>
-         <td><input type="text" name="lname" ></td>
-       </tr>
-       <tr>
-         <td> Email</td>
-         <td><input type="text" name="email" ></td>
-       </tr>
-       <tr>
-         <td><input type="hidden" name="id" ></td>
-         <td><input type="button" value="Save" ></td>
-       </tr>
-     </tbody>
-   </table>
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Start Bootstrap</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Sign Up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Log In</a>
+        </li>
+      </ul>
+    </div>
   </div>
- </form>
+</nav>

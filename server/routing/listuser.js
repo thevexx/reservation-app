@@ -20,6 +20,31 @@ router.post('/insert', (req, res) => {
 });
 
 
+
+// router.delete('/delete/:id', (req, res) => {
+
+//   db.collection('user').remove(req.body, (err, result)  => {
+//     if (err) {
+//       res.send({'error':'An error has occurred'});
+//     } else {
+//       res.send('user ' + id + ' deleted!');
+//     }
+//   });
+// });
+
+
+// app.put('update', (req, res) => {
+//   const user = { name: req.body.body, email: req.body.title };
+//   db.collection('user').update(name, email, (err, result) => {
+//     if (err) {
+//         res.send({'error':'An error has occurred'});
+//     } else {
+//         res.send(result);
+//     }
+//   });
+// });
+
+
 router.get('/list', (req, res) => {
   connection(db => {
     db.collection('user').find().toArray((err, result) => {

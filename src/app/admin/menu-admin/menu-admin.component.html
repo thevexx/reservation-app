@@ -1,41 +1,45 @@
-<button mat-button [matMenuTriggerFor]="rootMenu">
-    Menu
-  </button>
+<div id="wrapper" class="toggled">
 
-<mat-menu #rootMenu="matMenu">
-  <button mat-menu-item>Réservations</button>
-  <button mat-menu-item>Ecrans</button>
-  <button mat-menu-item>Utilisateurs</button>
-</mat-menu>
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a href="#">
+          Start Bootstrap
+        </a>
+      </li>
+      <li>
+        <a href="#">Dashboard</a>
+      </li>
+      <li>
+        <a href="#">Shortcuts</a>
+      </li>
+      <li>
+        <a href="#">Overview</a>
+      </li>
+      <li>
+        <a href="#">Events</a>
+      </li>
+      <li>
+        <a href="#">About</a>
+      </li>
+      <li>
+        <a href="#">Services</a>
+      </li>
+      <li>
+        <a href="#">Contact</a>
+      </li>
+    </ul>
 
 
-    <!-- <mat-toolbar color="primary">
-      <mat-toolbar-row>
-        <span>Reservations</span>
-      </mat-toolbar-row>
-
-      <mat-toolbar-row>
-        <span>Ecrans</span>
-      </mat-toolbar-row>
-      <mat-toolbar-row>
-        <span>Utilisateurs</span>
-      </mat-toolbar-row>
-    </mat-toolbar> -->
 
 
-    <!--
-      <mat-sidenav >
-        <mat-toolbar color="primary">
-        <mat-toolbar-row>
-          <span>Reservations</span>
-        </mat-toolbar-row>
 
-        <mat-toolbar-row>
-          <span>Ecrans</span>
-        </mat-toolbar-row>
-        <mat-toolbar-row>
-          <span>Utilisateurs</span>
-        </mat-toolbar-row>
-      </mat-toolbar>
-      </mat-sidenav>
- -->
+
+  </div>
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { AuthService } from './auth.service';
+import { AuthService } from './services/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MenuUserComponent } from './user/menu-user/menu-user.component';
 import { ListComponent } from './user/list/list.component';
@@ -21,10 +21,11 @@ import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { OffresComponent } from './admin/offres/offres.component';
 import { UsersComponent } from './admin/users/users.component';
 
- import { EcranService } from './ecran.service';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { AdminService } from './services/admin.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MaterialModule } from './material.module';
     UsersComponent,
     ReservationsComponent,
     EcransComponent,
-    OffresComponent
+    OffresComponent,
+    ReservationEcranComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,7 @@ import { MaterialModule } from './material.module';
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [AuthService, AuthGuard, RoleGuard, EcranService],
+  providers: [AuthService, AuthGuard, RoleGuard, AdminService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

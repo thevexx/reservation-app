@@ -17,10 +17,14 @@ export class RoleGuard implements CanActivate {
     const roles = next.data['roles'] as string;
 
     const token = localStorage.getItem('token');
-    const roleToken = jwt.decode(token, 'my_pass');
-    console.log(roleToken);
+    const roleToken = jwt.decode(token, 'my_pass').role;
 
-    if (roleToken === roles[0]) {
+    console.log(`role token : ${roleToken}`);
+    console.log(`role guard : ${roles}`);
+
+
+
+    if (roleToken === roles) {
       return true;
     }
     this.router.navigateByUrl('home');

@@ -1,9 +1,12 @@
-<html>
-  <header>
-    <tr>
-   <td> menu</td>
-    <td><input type="bouttn" value="histporique"></td></tr>
-  </header>
+<mat-grid-list cols="3" rowHeight="3:1">
+  <mat-grid-tile>1</mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>3</mat-grid-tile>
+  <mat-grid-tile>4</mat-grid-tile>
+  <mat-grid-tile>4</mat-grid-tile>
+</mat-grid-list>
 
- 
-</html>
+<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>

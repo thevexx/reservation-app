@@ -10,6 +10,7 @@ import { RoleGuard } from './guards/role.guard';
 import { UsersComponent } from './admin/users/users.component';
 import { ListComponent } from './user/list/list.component';
 import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
+import { ReservationEcranComponent } from './user/reservation-ecran/reservation-ecran.component';
 
 const routes: Routes = [{
   path: 'register',
@@ -45,8 +46,8 @@ const routes: Routes = [{
   component: ListComponent
 },
 {
-  path: 'menu-admin',
-  component: MenuAdminComponent
+  path: 'reservation/:id',
+  component: ReservationEcranComponent
 },
 {
   path: '**',
