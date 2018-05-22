@@ -26,6 +26,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { AdminService } from './services/admin.service';
 import { UserService } from './services/user.service';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { UserService } from './services/user.service';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    Ng2SmartTableModule
   ],
   providers: [AuthService, AuthGuard, RoleGuard, AdminService, UserService],
   bootstrap: [AppComponent]

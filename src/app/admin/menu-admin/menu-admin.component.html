@@ -4,38 +4,23 @@
   <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
       <li class="sidebar-brand">
-        <a href="#">
-          Start Bootstrap
+        <a>
+          Admin Menu
         </a>
       </li>
       <li>
-        <a href="#">Dashboard</a>
+        <a routerLink='/reservations'>Réservations</a>
       </li>
       <li>
-        <a href="#">Shortcuts</a>
+        <a routerLink='/ecrans'>Ecrans</a>
       </li>
       <li>
-        <a href="#">Overview</a>
+        <a routerLink="/users">Utilisateurs</a>
       </li>
       <li>
-        <a href="#">Events</a>
-      </li>
-      <li>
-        <a href="#">About</a>
-      </li>
-      <li>
-        <a href="#">Services</a>
-      </li>
-      <li>
-        <a href="#">Contact</a>
+        <a (click)='logout()'>Logout</a>
       </li>
     </ul>
-
-
-
-
-
-
   </div>
   <div id="page-content-wrapper">
     <div class="container-fluid">

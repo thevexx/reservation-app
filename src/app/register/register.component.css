@@ -1,0 +1,50 @@
+mat-card{
+  margin: auto;
+  padding: 50px;
+  max-width: 500px;
+}
+.basic-container {
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: lightgray;
+
+}
+
+.form-container {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.inputform{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* padding: 5em; */
+}
+
+.button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.title{
+  align-items: center;
+  display: flex;
+  margin: auto;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 56px;
+}
+button{
+  font-size: 15px;
+  font-weight: 200;
+  line-height: 15px;
+  padding: 20px;
+}

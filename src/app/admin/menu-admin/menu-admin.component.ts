@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu-admin',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuAdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
 
   events: string[] = ['reservation', 'Ecrans', 'Utilisateurs'];
@@ -16,5 +17,8 @@ export class MenuAdminComponent implements OnInit {
   shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
   ngOnInit() {
   }
-
+  logout() {
+    localStorage.clear();
+    this.router.navigateByUrl('login');
+  }
 }

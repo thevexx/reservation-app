@@ -1,11 +1,29 @@
-<mat-grid-list cols="3" rowHeight="3:1">
-  <mat-grid-tile>1</mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
-  <mat-grid-tile>3</mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
-  <mat-grid-tile>4</mat-grid-tile>
-</mat-grid-list>
+<app-menu-user></app-menu-user>
 
+
+<section>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="p-5">
+        <div>
+          <div class="container-cards">
+
+            <div class="card-item" *ngFor="let ecran of ecrans">
+              <div class="card" routerLink="/reservation/1">
+                <img class="card-img-top" src="http://placehold.it/700x400" alt="Card image cap">
+                <div class="card-body">
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <mat-paginator [length]="100"
               [pageSize]="10"
               [pageSizeOptions]="[5, 10, 25, 100]">

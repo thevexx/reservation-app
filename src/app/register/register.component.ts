@@ -8,16 +8,19 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 export class RegisterComponent implements OnInit {
 
   constructor() { }
-
+ errMessage;
   registerForm;
   ngOnInit() {
     this.registerForm = new FormGroup({
-      nom: new FormControl('', [Validators.required]),
-      prenom: new FormControl('', [Validators.required]),
+        name: new FormControl('', [Validators.required]),
+      lastname: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       adresse: new FormControl('', [Validators.required]),
-      cin: new FormControl('', [Validators.required, Validators.minLength(8), Validators.max(99999999)]),
       tel: new FormControl('', [Validators.required]),
+      CIN: new FormControl('', [Validators.required, Validators.minLength(8), Validators.max(99999999)]),
+      poste: new FormControl('', [Validators.required]),
+      entreprise: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(20)])
     });
 
   }

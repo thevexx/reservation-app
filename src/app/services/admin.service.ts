@@ -43,4 +43,14 @@ export class AdminService {
     const url = 'http://192.168.0.20:3000/api/ecrans/idUser';
     this.http.get(url, _idUser);
   }
+/* GET reservation by userId */
+
+   getReservationByUser(_idUser) {
+    const url = 'http://192.168.0.20:3000/api/ecrans/idUser';
+    this.http.get(url, _idUser);
+  }
+   getlistReservation() {
+    const url = 'http://192.168.0.20:3000/api/reservations/:idUser';
+this.http.get(url);
+  }
 }

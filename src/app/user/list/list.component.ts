@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+ ecrans = [1, 1, 1, 1, 1];
 
   constructor() { }
 

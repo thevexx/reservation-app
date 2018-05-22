@@ -1,23 +1,59 @@
-<form>
-Nom: <input type="text" > <br>
+<mat-form-field class="basic-container">
+  <mat-form-field class="form-container">
+    <form [formGroup]="registerForm" (ngSubmit)="(registerForm)">
+      <mat-card>
+        <mat-card-header>
+          <h1 class="title">
+            Register
+          </h1>
 
-Prenom: <input type="text" > <br>
+        </mat-card-header>
 
-Adresse: <input type="text" ><br>
 
-Email: <input type="email" ><br>
+          <mat-form-field floatPlaceholder="auto">
+            <input matInput formControlName="name" type="text" required placeholder="name">
+          </mat-form-field>
 
-Mot de passe: <input type="password" ><br>
+          <mat-form-field floatPlaceholder="auto">
+            <input matInput formControlName="lastname" type="text" required placeholder="lastname">
+          </mat-form-field>
 
-Confirmer le mot de passe: <input type="password" ><br>
+          <mat-form-field floatPlaceholder="auto">
+            <input matInput formControlName="email" type="email" required placeholder="email">
+          </mat-form-field>
 
-Tél :<input type="number" ><br>
 
-CIN :<input type="number" ><br>
 
-Poste :<input type="text" ><br>
 
-Entreprise :<input type="text" ><br>
+          <mat-form-field floatPlaceholder="auto">
+            <input matInput formControlName="adresse" type="text" required placeholder="Adresse">
+          </mat-form-field>
+          <mat-form-field floatPlaceholder="auto">
+            <input matInput formControlName="tel" type="number" required placeholder="tel">
+          </mat-form-field>
 
-<input type="button" value="inscritption"><br>
-</form>
+
+          <mat-form-field floatPlaceholder="auto">
+            <input matInput formControlName="CIN" type="number" required placeholder="CIN">
+          </mat-form-field>
+
+          <mat-form-field floatPlaceholder="auto">
+            <input matInput formControlName="poste" type="text" required placeholder="poste">
+          </mat-form-field>
+          <mat-form-field floatPlaceholder="auto">
+            <input matInput formControlName="entreprise" type="text" required placeholder="entreprise">
+          </mat-form-field>
+
+          <mat-form-field floatPlaceholder="auto">
+            <input matInput formControlName="password" type="password" required placeholder="password">
+          </mat-form-field>
+
+          <mat-error *ngIf=" errMessage">{{errMessage}}</mat-error>
+          <div class="button-row">
+            <button mat-raised-button type="reset" routerLink="/login">You already have an account?</button>
+            <button mat-raised-button [disabled]="registerForm.invalid" color="primary" type="submit">Register</button>
+          </div>
+       </mat-card>
+    </form>
+  </mat-form-field>
+</mat-form-field>
