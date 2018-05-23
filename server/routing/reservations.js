@@ -11,36 +11,55 @@ const connection = (closure) => {
   })
 }
 
-router.post('/', (req, res) => {
-    connection(db => {
-        db.collection('reservations').insert(req.body, (err,result) => {
-            res.send(result);
-            db.collection('users').update({_id: ObjectID(req.body.user_id)},{$push :{reservations: ObjectID(result._id)}})
-            db.collection('ecrans').update({_id: ObjectID(req.body.ecran_id)},{$push :{reservations: ObjectID(result._id)}})
+const mongoose = require('mongoose');
+const Reservations = require('../models/reservations');
 
-        });
-    });
-});
+mongoose.connect('mongodb://localhost:27017/reservationDB');
 
+const ReservationsModel = mongoose.model('reservations', Reservations);
 
-//get all list reservation
-router.get('/', (req, res) => {
-  connection(db => {
-    db.collection('reservations').find().toArray((err, result) => {
-      if (err) throw err;
-      res.send(result);
-    });
+router.get('/', async (req, res) => {
+  const reservations = await ReservationsModel.find().populate("users idUser", {
+    name: 1,
+    lastname: 1
+  }).populate("ecrans idEcran", {
+    name: 1
+  }).exec();
+  res.send(reservations);
+})
+
+router.post('/', async (req, res) => {
+  await ReservationsModel(req.body).save(err => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send({
+        message: 'ok'
+      });
+    }
   });
-});
-// list des reservations du client connecté
-router.get('/:user_id', (req, res) => {
-  connection(db => {
-    db.collection('reservations').find({user_id: ObjectID(req.params.user_id)}).toArray((err, result) => {
-      if (err) throw err;
-      res.send(result);
-    });
-  });
-});
+})
 
+router.get('/:id', async (req, res) => {
+  const reservation = await ReservationsModel.findById(req.params.id).populate("users idUser", {
+    name: 1,
+    lastname: 1
+  }).populate("ecrans idEcran", {
+    name: 1
+  }).exec();
+  res.send(reservation);
+})
+
+router.get('/byUser/:id', async (req,res) => {
+  const reservations = await ReservationsModel.find({idUser: req.params.id}).populate("ecrans idEcran", {
+    name: 1
+  }).exec();
+  res.send(reservations);
+})
+
+router.put('/:id', async (req, res) => {
+  const reservation = await ReservationsModel.findByIdAndUpdate(req.params.id,{$set: {etat: req.body.etat }}).exec().then();
+  res.send(reservation);
+})
 
 module.exports = router;

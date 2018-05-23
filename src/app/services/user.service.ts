@@ -12,15 +12,21 @@ export class UserService {
 
   addReservation(reservation) {
     const url = 'http://192.168.0.20:3000/api/reservations';
-    this.http.post(url, reservation);
+    return this.http.post(url, reservation);
   }
 
   listReservation() {
     const url = 'http://192.168.0.20:3000/api/reservations';
-    this.http.get(url);
+    return this.http.get(url);
   }
   getlistReservationByUser() {
     const url = 'http://192.168.0.20:3000/api/reservations/user_id';
-this.http.get(url);
+    return this.http.get(url);
+  }
+  getEcrans() {
+    return this.http.get('http://192.168.0.20:3000/api/ecrans');
+  }
+  getEcranById(idEcran) {
+    return this.http.get('http://192.168.0.20:3000/api/ecrans/' + idEcran);
   }
 }

@@ -9,21 +9,21 @@ const connection = (closure) => {
     let db = client.db('reservationDB');
     closure(db);
   })
-}
-router.post('/insert', (req, res) => {
-  connection(db => {
-    db.collection('user').insert(req.body, (err, result) => {
-      res.send(result);
-    });
+    }
+const mongoose = require('mongoose');
+const Users = require('../models/users');
+mongoose.connect('mongodb://localhost:27017/reservationDB');
+const UsersModel = mongoose.model('users', Users);
 
-  })
-});
+router.post('/insert',async (req, res) => {
+  const user = await UsersModel.find()
+})
 
 
 
 // router.delete('/delete/:id', (req, res) => {
 
-//   db.collection('user').remove(req.body, (err, result)  => {
+//   db.collection('user').delete(req.body, (err, result)  => {
 //     if (err) {
 //       res.send({'error':'An error has occurred'});
 //     } else {
@@ -32,65 +32,60 @@ router.post('/insert', (req, res) => {
 //   });
 // });
 
+// router.put('/', async (req, res) => {
+//   const listuser = await listuserModel.findByIdAndUpdate(req.params.id,{$set:body}).exec();
+//   res.send(listuser);
+// })
 
-// app.put('update', (req, res) => {
-//   const user = { name: req.body.body, email: req.body.title };
-//   db.collection('user').update(name, email, (err, result) => {
-//     if (err) {
-//         res.send({'error':'An error has occurred'});
-//     } else {
-//         res.send(result);
-//     }
+
+
+
+// router.get('/list', (req, res) => {
+//   connection(db => {
+//     db.collection('user').find().toArray((err, result) => {
+//       if (err) throw err;
+//       res.send(result);
+//     });
+//   });
+// });
+
+// router.get('/', (req, res) => {
+//   connection(db => {
+//     db.collection('user').find({}, {
+//       _id: 0,
+//     }).toArray((err, result) => {
+//       if (err) throw err;
+//       res.send(result);
+//     });
+//   });
+// });
+
+// //finduserByUsers en parametre
+// router.get('/:idUser', (req, res) => {
+//   connection(db => {
+//     db.collection('user').find({_idUser: ObjectID(req.params.idUser)}
+//     ).toArray((err, result) => {
+//       if (err) throw err;
+//       res.send(result);
+//     });
 //   });
 // });
 
 
-router.get('/list', (req, res) => {
-  connection(db => {
-    db.collection('user').find().toArray((err, result) => {
-      if (err) throw err;
-      res.send(result);
-    });
-  });
-});
-
-router.get('/', (req, res) => {
-  connection(db => {
-    db.collection('user').find({}, {
-      _id: 0,
-    }).toArray((err, result) => {
-      if (err) throw err;
-      res.send(result);
-    });
-  });
-});
-
-//findEcranByUsers en parametre
-router.get('/:idUser', (req, res) => {
-  connection(db => {
-    db.collection('user').find({_idUser: ObjectID(req.params.idUser)}
-    ).toArray((err, result) => {
-      if (err) throw err;
-      res.send(result);
-    });
-  });
-});
 
 
-
-
-router.get('/:id', (req, res) => {
-  connection(db => {
-    db.collection('user').findOne({
-        _id: ObjectID(req.params.id)
-      }, {
-        nom: 1
-      },
-      (err, result) => {
-        res.send(result);
-      });
-  })
-});
+// router.get('/:id', (req, res) => {
+//   connection(db => {
+//     db.collection('user').findOne({
+//         _id: ObjectID(req.params.id)
+//       }, {
+//         nom: 1
+//       },
+//       (err, result) => {
+//         res.send(result);
+//       });
+//   })
+// });
 
 
 module.exports = router;

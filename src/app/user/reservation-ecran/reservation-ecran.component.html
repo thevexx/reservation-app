@@ -9,16 +9,16 @@
           <div class="container">
 
             <!-- Page Heading -->
-            <h1 class="my-4">Page Heading
+            <h1 class="my-4">{{ecran?.name}}
               <small>Secondary Text</small>
             </h1>
 
             <!-- Project One -->
             <div class="row">
               <div class="col-md-7">
-                <a href="#">
-                  <img class="img-fluid rounded mb-3 mb-md-0" src="http://placehold.it/700x300" alt="">
-                </a>
+                <div class="embed-responsive embed-responsive-16by9">
+                  <iframe class="embed-responsive-item" [src]="geturl(ecran.youtubeUrl)" allowfullscreen></iframe>
+                </div>
                 <div>
                   <h3>Project One</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum

@@ -1,7 +1,9 @@
 <app-menu-admin>
 
-  <p>
-    reservations works!
-  </p>
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+
+
 
 </app-menu-admin>

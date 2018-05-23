@@ -42,7 +42,7 @@ const routes: Routes = [{
   component: UsersComponent
 },
 {
-  path: 'list',
+  path: 'historique',
   component: ListComponent
 },
 {
