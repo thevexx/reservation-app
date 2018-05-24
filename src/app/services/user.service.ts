@@ -11,22 +11,22 @@ export class UserService {
 
 
   addReservation(reservation) {
-    const url = 'http://localhost:3000/api/reservations';
+    const url = 'http://137.117.132.180:3000/api/reservations';
     return this.http.post(url, reservation);
   }
 
   listReservation() {
-    const url = 'http://localhost:3000/api/reservations';
+    const url = 'http://137.117.132.180:3000/api/reservations';
     return this.http.get(url);
   }
   getlistReservationByUser() {
-    const url = 'http://localhost:3000/api/reservations/user_id';
+    const url = 'http://137.117.132.180:3000/api/reservations/user_id';
     return this.http.get(url);
   }
   getEcrans() {
-    return this.http.get('http://localhost:3000/api/ecrans');
+    return this.http.get('http://137.117.132.180:3000/api/ecrans');
   }
   getEcranById(idEcran) {
-    return this.http.get('http://localhost:3000/api/ecrans/' + idEcran);
+    return this.http.get('http://137.117.132.180:3000/api/ecrans/' + idEcran);
   }
 }

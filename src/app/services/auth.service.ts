@@ -9,7 +9,7 @@ export class AuthService {
 
   loginUser(loginUser) {
 
-    const url = 'http://192.168.0.20:3000/auth/login';
+    const url = 'http://137.117.132.180:3000/auth/login';
     return this.http.post(url, loginUser);
   }
 
@@ -17,7 +17,7 @@ export class AuthService {
 
   getregister(user) {
 
-    return this.http.post('http://192.168.0.20:3000/auth/register' , user);
+    return this.http.post('http://137.117.132.180:3000/auth/register' , user);
 
   }
 
