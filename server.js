@@ -28,12 +28,12 @@ app.use('/api/ecrans', ecrans);
 
 
 // Angular DIST output folder
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist/reservation-app')));
 
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
+    res.sendFile(path.join(__dirname, 'dist/reservation-app/index.html'));
 });
 
 
