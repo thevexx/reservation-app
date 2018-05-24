@@ -1134,52 +1134,52 @@ var AdminService = /** @class */ (function () {
         this.http = http;
     }
     AdminService.prototype.getAllUser = function () {
-        var url = 'http://192.168.0.20:3000/api/listuser/list';
+        var url = 'http://localhost:3000/api/listuser/list';
         return this.http.get(url);
     };
     AdminService.prototype.AddnewUser = function (user) {
-        var url = 'http://192.168.0.20:3000/api/listuser/insert';
+        var url = 'http://localhost:3000/api/listuser/insert';
         return this.http.post(url, user);
     };
     AdminService.prototype.AddUser = function (user) {
-        var url = 'http://192.168.0.20:3000/api/listuser/update';
+        var url = 'http://localhost:3000/api/listuser/update';
         return this.http.put(url, user);
     };
     AdminService.prototype.delUser = function (user) {
-        var url = 'http://192.168.0.20:3000/api/listuser/delete';
+        var url = 'http://localhost:3000/api/listuser/delete';
         return this.http.delete(url, user);
     };
     AdminService.prototype.getUserByUser = function (_idUser) {
-        var url = 'http://192.168.0.20:3000/api/listuser/idUser';
+        var url = 'http://localhost:3000/api/listuser/idUser';
         return this.http.get(url, _idUser);
     };
     AdminService.prototype.getAllEcrans = function () {
-        var url = 'http://192.168.0.20:3000/api/ecrans';
+        var url = 'http://localhost:3000/api/ecrans';
         return this.http.get(url);
     };
     AdminService.prototype.AddnewEcran = function (ecran) {
-        var url = 'http://192.168.0.20:3000/api/ecrans';
+        var url = 'http://localhost:3000/api/ecrans';
         return this.http.post(url, ecran);
     };
     AdminService.prototype.getEcranById = function (_idEcran) {
-        var url = 'http://192.168.0.20:3000/api/ecrans/' + _idEcran;
+        var url = 'http://localhost:3000/api/ecrans/' + _idEcran;
         return this.http.get(url);
     };
     AdminService.prototype.getEcranByUser = function (_idUser) {
-        var url = 'http://192.168.0.20:3000/api/ecrans/idUser';
+        var url = 'http://localhost:3000/api/ecrans/idUser';
         return this.http.get(url, _idUser);
     };
     /* GET reservation by userId */
     AdminService.prototype.getReservationByUser = function (_idUser) {
-        var url = 'http://192.168.0.20:3000/api/reservations/byUser/idUser';
+        var url = 'http://localhost:3000/api/reservations/byUser/idUser';
         return this.http.get(url, _idUser);
     };
     AdminService.prototype.getlistReservation = function () {
-        var url = 'http://192.168.0.20:3000/api/reservations/';
+        var url = 'http://localhost:3000/api/reservations/';
         return this.http.get(url);
     };
     AdminService.prototype.UpdateReservationEtat = function (id, reser) {
-        var url = 'http://192.168.0.20:3000/api/reservations/' + id;
+        var url = 'http://localhost:3000/api/reservations/' + id;
         return this.http.put(url, reser);
     };
     AdminService = __decorate([
@@ -1270,22 +1270,22 @@ var UserService = /** @class */ (function () {
         this.http = http;
     }
     UserService.prototype.addReservation = function (reservation) {
-        var url = 'http://192.168.0.20:3000/api/reservations';
+        var url = 'http://localhost:3000/api/reservations';
         return this.http.post(url, reservation);
     };
     UserService.prototype.listReservation = function () {
-        var url = 'http://192.168.0.20:3000/api/reservations';
+        var url = 'http://localhost:3000/api/reservations';
         return this.http.get(url);
     };
     UserService.prototype.getlistReservationByUser = function () {
-        var url = 'http://192.168.0.20:3000/api/reservations/user_id';
+        var url = 'http://localhost:3000/api/reservations/user_id';
         return this.http.get(url);
     };
     UserService.prototype.getEcrans = function () {
-        return this.http.get('http://192.168.0.20:3000/api/ecrans');
+        return this.http.get('http://localhost:3000/api/ecrans');
     };
     UserService.prototype.getEcranById = function (idEcran) {
-        return this.http.get('http://192.168.0.20:3000/api/ecrans/' + idEcran);
+        return this.http.get('http://localhost:3000/api/ecrans/' + idEcran);
     };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
