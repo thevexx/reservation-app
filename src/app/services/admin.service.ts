@@ -8,58 +8,58 @@ export class AdminService {
 
   constructor(private http: Http) { }
   getAllUser() {
-    const url = 'http://192.168.0.20:3000/api/listuser/list';
+    const url = 'http://localhost:3000/api/listuser/list';
     return this.http.get(url);
   }
 
   AddnewUser(user) {
-    const url = 'http://192.168.0.20:3000/api/listuser/insert';
+    const url = 'http://localhost:3000/api/listuser/insert';
     return this.http.post(url, user);
   }
   AddUser(user) {
-    const url = 'http://192.168.0.20:3000/api/listuser/update';
+    const url = 'http://localhost:3000/api/listuser/update';
     return this.http.put(url, user);
   }
   delUser(user) {
-    const url = 'http://192.168.0.20:3000/api/listuser/delete';
+    const url = 'http://localhost:3000/api/listuser/delete';
     return this.http.delete(url, user);
   }
   getUserByUser(_idUser) {
-    const url = 'http://192.168.0.20:3000/api/listuser/idUser';
+    const url = 'http://localhost:3000/api/listuser/idUser';
     return this.http.get(url, _idUser);
   }
 
   getAllEcrans() {
-    const url = 'http://192.168.0.20:3000/api/ecrans';
+    const url = 'http://localhost:3000/api/ecrans';
     return this.http.get(url);
   }
 
   AddnewEcran(ecran) {
-    const url = 'http://192.168.0.20:3000/api/ecrans';
+    const url = 'http://localhost:3000/api/ecrans';
     return this.http.post(url, ecran);
   }
 
   getEcranById(_idEcran) {
-    const url = 'http://192.168.0.20:3000/api/ecrans/' + _idEcran;
+    const url = 'http://localhost:3000/api/ecrans/' + _idEcran;
     return this.http.get(url);
   }
   getEcranByUser(_idUser) {
-    const url = 'http://192.168.0.20:3000/api/ecrans/idUser';
+    const url = 'http://localhost:3000/api/ecrans/idUser';
     return this.http.get(url, _idUser);
   }
   /* GET reservation by userId */
 
   getReservationByUser(_idUser) {
-    const url = 'http://192.168.0.20:3000/api/reservations/byUser/idUser';
+    const url = 'http://localhost:3000/api/reservations/byUser/idUser';
     return this.http.get(url, _idUser);
   }
   getlistReservation() {
-    const url = 'http://192.168.0.20:3000/api/reservations/';
+    const url = 'http://localhost:3000/api/reservations/';
     return this.http.get(url);
   }
 
   UpdateReservationEtat(id, reser) {
-    const url = 'http://192.168.0.20:3000/api/reservations/' + id;
+    const url = 'http://localhost:3000/api/reservations/' + id;
     return this.http.put(url, reser);
   }
 }
