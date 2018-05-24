@@ -1,9 +1,33 @@
 <app-menu-admin>
+<table class="table table-bordered table-dark">
+    <thead>
+      <tr>
+        <th scope="col">actions</th>
+        <th scope="col">etat</th>
+        <th scope="col">Date de reservation</th>
+        <th scope="col">Date de debut</th>
+        <th scope="col">Date de Fin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reservation of reservations">
+        <th scope="row" style="width: 110px;">
 
-    <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-      </mat-form-field>
+          <button mat-icon-button (click)="reservationAcceptBtn(reservation._id)" data-toggle="modal" data-target="#exampleModalEdit">
+            <mat-icon>create</mat-icon>
+
+          </button>
+          <button mat-icon-button color="warn" (click)="reservationRefusedBtn(reservation._id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </th>
+        <td>{{reservation.etat}}</td>
+        <td>{{reservation.dateRes  | date:'fullDate'}}</td>
+        <td>{{reservation.dateDebut  | date:'fullDate'}}</td>
+        <td>{{reservation.dateFin | date:'fullDate'}}</td>
+      </tr>
 
 
-
+    </tbody>
+  </table>
 </app-menu-admin>

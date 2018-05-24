@@ -58,7 +58,7 @@ router.get('/byUser/:id', async (req,res) => {
 })
 
 router.put('/:id', async (req, res) => {
-  const reservation = await ReservationsModel.findByIdAndUpdate(req.params.id,{$set: {etat: req.body.etat }}).exec().then();
+  const reservation = await ReservationsModel.findByIdAndUpdate(req.params.id,{$set: {etat: req.body.etat }}).exec();
   res.send(reservation);
 })
 

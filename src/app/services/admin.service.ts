@@ -50,11 +50,16 @@ export class AdminService {
   /* GET reservation by userId */
 
   getReservationByUser(_idUser) {
-    const url = 'http://192.168.0.20:3000/api/ecrans/idUser';
+    const url = 'http://192.168.0.20:3000/api/reservations/byUser/idUser';
     return this.http.get(url, _idUser);
   }
   getlistReservation() {
-    const url = 'http://192.168.0.20:3000/api/reservations/:idUser';
+    const url = 'http://192.168.0.20:3000/api/reservations/';
     return this.http.get(url);
+  }
+
+  UpdateReservationEtat(id, reser) {
+    const url = 'http://192.168.0.20:3000/api/reservations/' + id;
+    return this.http.put(url, reser);
   }
 }

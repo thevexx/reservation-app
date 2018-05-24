@@ -1,15 +1,15 @@
-mat-card{
+mat-card {
   margin: auto;
   padding: 50px;
   max-width: 500px;
 }
+
 .basic-container {
   display: table;
   position: absolute;
   height: 100%;
   width: 100%;
   background-color: lightgray;
-
 }
 
 .form-container {
@@ -17,7 +17,7 @@ mat-card{
   vertical-align: middle;
 }
 
-.inputform{
+.inputform {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ mat-card{
   padding-bottom: 40px;
 }
 
-.title{
+.title {
   align-items: center;
   display: flex;
   margin: auto;
@@ -42,7 +42,8 @@ mat-card{
   font-weight: 300;
   line-height: 56px;
 }
-button{
+
+button {
   font-size: 15px;
   font-weight: 200;
   line-height: 15px;
