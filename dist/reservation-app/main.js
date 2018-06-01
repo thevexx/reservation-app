@@ -23,6 +23,134 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/admin/admins/admins.component.css":
+/*!***************************************************!*\
+  !*** ./src/app/admin/admins/admins.component.css ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/admin/admins/admins.component.html":
+/*!****************************************************!*\
+  !*** ./src/app/admin/admins/admins.component.html ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<app-menu-admin>\n  <input #search class=\"search\" type=\"text\" placeholder=\"Search...\" (keydown.enter)=\"onSearch(search.value)\">\n  <ng2-smart-table [settings]=\"settings\" [source]=\"source\"></ng2-smart-table>\n</app-menu-admin>\n"
+
+/***/ }),
+
+/***/ "./src/app/admin/admins/admins.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/admin/admins/admins.component.ts ***!
+  \**************************************************/
+/*! exports provided: AdminsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminsComponent", function() { return AdminsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var ng2_smart_table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ng2-smart-table */ "./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var _services_admin_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/admin.service */ "./src/app/services/admin.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AdminsComponent = /** @class */ (function () {
+    function AdminsComponent(adminService) {
+        this.adminService = adminService;
+        this.settings = {
+            columns: {
+                id: {
+                    title: 'ID',
+                    filter: false
+                },
+                name: {
+                    title: ' name',
+                    filter: false
+                },
+                lastname: {
+                    title: 'lastname',
+                    filter: false
+                },
+                email: {
+                    title: 'Email',
+                    filter: false
+                },
+            }
+        };
+        this.data = [
+            {
+                'id': 1,
+                'nom': 'chehir',
+                'prenom': 'dhwedi',
+                'pass': 'fivepts',
+                'email': 'fivepoints.com',
+            }
+        ];
+    }
+    AdminsComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.adminService.getUserByRole('admin').subscribe(function (res) {
+            _this.data = res.json();
+            _this.source = new ng2_smart_table__WEBPACK_IMPORTED_MODULE_1__["LocalDataSource"](_this.data);
+        });
+    };
+    AdminsComponent.prototype.onSearch = function (query) {
+        if (query === void 0) { query = ''; }
+        this.source.setFilter([
+            // fields we want to include in the search
+            {
+                field: 'id',
+                search: query
+            },
+            {
+                field: 'Nom',
+                search: query
+            },
+            {
+                field: 'prenom',
+                search: query
+            },
+            {
+                field: 'pass',
+                search: query
+            },
+            {
+                field: 'email',
+                search: query
+            }
+        ], false);
+    };
+    AdminsComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-admins',
+            template: __webpack_require__(/*! ./admins.component.html */ "./src/app/admin/admins/admins.component.html"),
+            styles: [__webpack_require__(/*! ./admins.component.css */ "./src/app/admin/admins/admins.component.css")]
+        }),
+        __metadata("design:paramtypes", [_services_admin_service__WEBPACK_IMPORTED_MODULE_2__["AdminService"]])
+    ], AdminsComponent);
+    return AdminsComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/admin/ecrans/ecrans.component.css":
 /*!***************************************************!*\
   !*** ./src/app/admin/ecrans/ecrans.component.css ***!
@@ -41,7 +169,7 @@ module.exports = ".input-full-width {\r\n  width: 100%;\r\n}\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-menu-admin>\r\n\r\n\r\n\r\n\r\n  <table class=\"table table-bordered table-dark\">\r\n    <thead>\r\n      <tr>\r\n        <th scope=\"col\">actions</th>\r\n        <th scope=\"col\">name</th>\r\n        <th scope=\"col\">nbr Spot Par Iteration</th>\r\n        <th scope=\"col\">Prix</th>\r\n        <th scope=\"col\">Emplacement</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let ecran of ecrans\">\r\n        <th scope=\"row\" style=\"width: 110px;\">\r\n\r\n          <button mat-icon-button (click)=\"ecranEditBtn(ecran._id)\" data-toggle=\"modal\" data-target=\"#exampleModalEdit\">\r\n            <mat-icon>create</mat-icon>\r\n          </button>\r\n          <button mat-icon-button color=\"warn\">\r\n            <mat-icon>delete</mat-icon>\r\n          </button>\r\n        </th>\r\n        <td>{{ecran.name}}</td>\r\n        <td>{{ecran.nSpotParIteration}}</td>\r\n        <td>{{ecran.prix}}</td>\r\n        <td>{{ecran.emplacementPhysique}}</td>\r\n      </tr>\r\n\r\n\r\n    </tbody>\r\n  </table>\r\n  <button mat-fab  color=\"primary\" data-toggle=\"modal\" data-target=\"#exampleModal\">\r\n      <mat-icon>add</mat-icon>\r\n    </button>\r\n\r\n\r\n  <div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n      <div class=\"modal-content\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">Ajout ecran</h5>\r\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n\r\n          <form [formGroup]=\"ecranForm\"  (ngSubmit)=\"AjoutEcran(ecranForm.value)\">\r\n\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-12\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"name\" formControlName=\"name\" >\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-12\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Emplacement physique\" formControlName=\"emplacementPhysique\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <label>Emplacement GPS</label>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"longtitude\" formControlName=\"gpslong\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"latitude\" formControlName=\"gpslat\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <label>Dimension</label>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Longueur\" formControlName=\"dimlong\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Largeur\" formControlName=\"dimlar\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <label>Resolution</label>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Longueur\" formControlName=\"reslong\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Largeur\" formControlName=\"reslar\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Nombre spot par iteration\" formControlName=\"nSpotParIteration\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Prix\" formControlName=\"prix\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"picture url\" formControlName=\"pictureUrl\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"youtube video url\" formControlName=\"youtubeUrl\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"modal-footer\"></div>\r\n            <button type=\"submit\" class=\"btn btn-primary\">enregistrer</button>\r\n            <button type=\"reset\" class=\"btn btn-secondary\" data-dismiss=\"modal\">annuler</button>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n\r\n  <div class=\"modal fade\" id=\"exampleModalEdit\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabelEdit\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n      <div class=\"modal-content\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">Edit ecran</h5>\r\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n\r\n          <form [formGroup]=\"ecranForm\">\r\n\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-12\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"name\" [value]=\"ecranToEdit?.name\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-12\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Emplacement physique\" [value]=\"ecranToEdit?.emplacementPhysique\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <label>Emplacement GPS</label>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"longtitude\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"latitude\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <label>Dimension</label>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Longueur\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Largeur\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <label>Resolution</label>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Longueur\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Largeur\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Nombre spot par iteration\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Prix\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"picture url\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"youtube video url\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"modal-footer\"></div>\r\n            <button type=\"submit\" class=\"btn btn-primary\">enregistrer</button>\r\n            <button type=\"reset\" class=\"btn btn-secondary\" data-dismiss=\"modal\">annuler</button>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</app-menu-admin>\r\n"
+module.exports = "<app-menu-admin>\r\n\r\n\r\n\r\n\r\n  <table class=\"table table-bordered table-dark\">\r\n    <thead>\r\n      <tr>\r\n        <th scope=\"col\">actions</th>\r\n        <th scope=\"col\">name</th>\r\n        <th scope=\"col\">nbr Spot Par Iteration</th>\r\n        <th scope=\"col\">Prix</th>\r\n        <th scope=\"col\">Emplacement</th>\r\n      </tr>\r\n    </thead>\r\n    <tbody>\r\n      <tr *ngFor=\"let ecran of ecrans\">\r\n        <th scope=\"row\" style=\"width: 110px;\">\r\n\r\n          <button mat-icon-button (click)=\"ecranEditBtn(ecran._id)\" data-toggle=\"modal\" data-target=\"#exampleModalEdit\">\r\n            <mat-icon>create</mat-icon>\r\n          </button>\r\n          <button mat-icon-button color=\"warn\" (click)=\"ecranDelBtn(ecran._id)\">\r\n            <mat-icon>delete</mat-icon>\r\n          </button>\r\n        </th>\r\n        <td>{{ecran.name}}</td>\r\n        <td>{{ecran.nSpotParIteration}}</td>\r\n        <td>{{ecran.prix}}</td>\r\n        <td>{{ecran.emplacementPhysique}}</td>\r\n      </tr>\r\n\r\n\r\n    </tbody>\r\n  </table>\r\n  <button mat-fab  color=\"primary\" data-toggle=\"modal\" data-target=\"#exampleModal\">\r\n      <mat-icon>add</mat-icon>\r\n    </button>\r\n\r\n\r\n  <div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n      <div class=\"modal-content\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">Ajout ecran</h5>\r\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n\r\n          <form [formGroup]=\"ecranForm\"  (ngSubmit)=\"AjoutEcran(ecranForm.value)\">\r\n\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-12\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"name\" formControlName=\"name\" >\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-12\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Emplacement physique\" formControlName=\"emplacementPhysique\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <label>Emplacement GPS</label>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"longtitude\" formControlName=\"gpslong\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"latitude\" formControlName=\"gpslat\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <label>Dimension</label>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Longueur\" formControlName=\"dimlong\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Largeur\" formControlName=\"dimlar\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <label>Resolution</label>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Longueur\" formControlName=\"reslong\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Largeur\" formControlName=\"reslar\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Nombre spot par iteration\" formControlName=\"nSpotParIteration\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Prix\" formControlName=\"prix\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"picture url\" formControlName=\"pictureUrl\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"youtube video url\" formControlName=\"youtubeUrl\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"modal-footer\"></div>\r\n            <button type=\"submit\" class=\"btn btn-primary\">enregistrer</button>\r\n            <button type=\"reset\" class=\"btn btn-secondary\" data-dismiss=\"modal\">annuler</button>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n\r\n  <div class=\"modal fade\" id=\"exampleModalEdit\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabelEdit\" aria-hidden=\"true\">\r\n    <div class=\"modal-dialog\" role=\"document\">\r\n      <div class=\"modal-content\">\r\n        <div class=\"modal-header\">\r\n          <h5 class=\"modal-title\" id=\"exampleModalLabel\">Edit ecran</h5>\r\n          <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n            <span aria-hidden=\"true\">&times;</span>\r\n          </button>\r\n        </div>\r\n        <div class=\"modal-body\">\r\n\r\n          <form [formGroup]=\"ecranForm\">\r\n\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-12\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"name\" [value]=\"ecranToEdit?.name\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-12\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Emplacement physique\" [value]=\"ecranToEdit?.emplacementPhysique\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <label>Emplacement GPS</label>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"longtitude\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"latitude\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <label>Dimension</label>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Longueur\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Largeur\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <label>Resolution</label>\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Longueur\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Largeur\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Nombre spot par iteration\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"Prix\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"form-row\">\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"picture url\">\r\n                </mat-form-field>\r\n              </div>\r\n              <div class=\"form-group col-md-6\">\r\n                <mat-form-field class=\"input-full-width\">\r\n                  <input matInput placeholder=\"youtube video url\">\r\n                </mat-form-field>\r\n              </div>\r\n            </div>\r\n\r\n            <div class=\"modal-footer\"></div>\r\n            <button type=\"submit\" class=\"btn btn-primary\">enregistrer</button>\r\n            <button type=\"reset\" class=\"btn btn-secondary\" data-dismiss=\"modal\">annuler</button>\r\n          </form>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</app-menu-admin>\r\n"
 
 /***/ }),
 
@@ -99,6 +227,14 @@ var EcransComponent = /** @class */ (function () {
         this.adminService.getEcranById(id).subscribe(function (res) {
             console.log(res.json());
             _this.ecranToEdit = res.json();
+            _this.ngOnInit();
+        });
+    };
+    EcransComponent.prototype.ecranDelBtn = function (id) {
+        var _this = this;
+        this.adminService.deleteEcran(id).subscribe(function (res) {
+            console.log(res.json());
+            _this.ngOnInit();
         });
     };
     EcransComponent.prototype.AjoutEcran = function (ecran) {
@@ -145,7 +281,7 @@ module.exports = "/*!\r\n * Start Bootstrap - Simple Sidebar (https://startboots
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"wrapper\" class=\"toggled\">\n\n  <!-- Sidebar -->\n  <div id=\"sidebar-wrapper\">\n    <ul class=\"sidebar-nav\">\n      <li class=\"sidebar-brand\">\n        <a>\n          Admin Menu\n        </a>\n      </li>\n      <li>\n        <a routerLink='/reservations'>Réservations</a>\n      </li>\n      <li>\n        <a routerLink='/ecrans'>Ecrans</a>\n      </li>\n      <li>\n        <a routerLink=\"/users\">Utilisateurs</a>\n      </li>\n      <li>\n        <a (click)='logout()'>Logout</a>\n      </li>\n    </ul>\n  </div>\n  <div id=\"page-content-wrapper\">\n    <div class=\"container-fluid\">\n      <ng-content></ng-content>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div id=\"wrapper\" class=\"toggled\">\n\n  <!-- Sidebar -->\n  <div id=\"sidebar-wrapper\">\n    <ul class=\"sidebar-nav\">\n      <li class=\"sidebar-brand\">\n        <a>\n          Admin Menu\n        </a>\n      </li>\n      <li>\n        <a routerLink='/reservations'>Réservations</a>\n      </li>\n      <li>\n        <a routerLink='/ecrans'>Ecrans</a>\n      </li>\n      <li>\n        <a routerLink=\"/users\">Utilisateurs</a>\n      </li>\n      <li>\n        <a routerLink=\"/admins\">Administrateurs</a>\n      </li>\n      <li>\n        <a (click)='logout()'>Logout</a>\n      </li>\n    </ul>\n  </div>\n  <div id=\"page-content-wrapper\">\n    <div class=\"container-fluid\">\n      <ng-content></ng-content>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -280,7 +416,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-menu-admin>\n<table class=\"table table-bordered table-dark\">\n    <thead>\n      <tr>\n        <th scope=\"col\">actions</th>\n        <th scope=\"col\">etat</th>\n        <th scope=\"col\">Date de reservation</th>\n        <th scope=\"col\">Date de debut</th>\n        <th scope=\"col\">Date de Fin</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let reservation of reservations\">\n        <th scope=\"row\" style=\"width: 110px;\">\n\n          <button mat-icon-button (click)=\"reservationAcceptBtn(reservation._id)\" data-toggle=\"modal\" data-target=\"#exampleModalEdit\">\n            <mat-icon>create</mat-icon>\n\n          </button>\n          <button mat-icon-button color=\"warn\" (click)=\"reservationRefusedBtn(reservation._id)\">\n            <mat-icon>delete</mat-icon>\n          </button>\n        </th>\n        <td>{{reservation.etat}}</td>\n        <td>{{reservation.dateRes  | date:'fullDate'}}</td>\n        <td>{{reservation.dateDebut  | date:'fullDate'}}</td>\n        <td>{{reservation.dateFin | date:'fullDate'}}</td>\n      </tr>\n\n\n    </tbody>\n  </table>\n</app-menu-admin>\n"
+module.exports = "<app-menu-admin>\n<table class=\"table table-bordered table-dark\">\n    <thead>\n      <tr>\n        <th scope=\"col\">actions</th>\n        <th scope=\"col\">etat</th>\n        <th scope=\"col\">Date de reservation</th>\n        <th scope=\"col\">Date de debut</th>\n        <th scope=\"col\">Date de Fin</th>\n        <th scope=\"col\">client</th>\n      </tr>\n    </thead>\n    <tbody>\n      <tr *ngFor=\"let reservation of reservations\">\n        <th scope=\"row\" style=\"width: 110px;\">\n\n          <button mat-icon-button (click)=\"reservationAcceptBtn(reservation._id)\" data-toggle=\"modal\" data-target=\"#exampleModalEdit\">\n            <mat-icon>done</mat-icon>\n\n          </button>\n          <button mat-icon-button color=\"warn\" (click)=\"reservationRefusedBtn(reservation._id)\">\n            <mat-icon>clear</mat-icon>\n          </button>\n        </th>\n        <td>{{reservation.etat}}</td>\n        <td>{{reservation.dateRes  | date:'fullDate'}}</td>\n        <td>{{reservation.dateDebut  | date:'fullDate'}}</td>\n        <td>{{reservation.dateFin | date:'fullDate'}}</td>\n        <td>{{ reservation.idUser.name }} {{ reservation.idUser.lastname }}</td>\n      </tr>\n\n\n    </tbody>\n  </table>\n</app-menu-admin>\n"
 
 /***/ }),
 
@@ -331,6 +467,7 @@ var ReservationsComponent = /** @class */ (function () {
         var _this = this;
         this.adminService.UpdateReservationEtat(idreservation, { etat: 'accepte' }).subscribe(function (res) {
             _this.openSnackBar('Modification', 'reservation accepté ');
+            _this.ngOnInit();
         });
         this.ngOnInit();
     };
@@ -339,8 +476,8 @@ var ReservationsComponent = /** @class */ (function () {
         this.adminService.UpdateReservationEtat(idreservation, { etat: 'refused' }).subscribe(function (res) {
             _this.openSnackBar('Modification', 'reservation refusée ');
             console.log('Etat reservation modifié ');
+            _this.ngOnInit();
         });
-        this.ngOnInit();
     };
     ReservationsComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -364,7 +501,7 @@ var ReservationsComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-menu-admin>\n\n\n  \n  <input #search class=\"search\" type=\"text\" placeholder=\"Search...\" (keydown.enter)=\"onSearch(search.value)\">\n  <ng2-smart-table [settings]=\"settings\" [source]=\"source\"></ng2-smart-table>\n\n</app-menu-admin>\n"
+module.exports = "<app-menu-admin>\n  <input #search class=\"search\" type=\"text\" placeholder=\"Search...\" (keydown.enter)=\"onSearch(search.value)\">\n  <ng2-smart-table [settings]=\"settings\" [source]=\"source\" (create)=\"createBtn($event)\"></ng2-smart-table>\n</app-menu-admin>\n"
 
 /***/ }),
 
@@ -380,6 +517,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UsersComponent", function() { return UsersComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var ng2_smart_table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ng2-smart-table */ "./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var _services_admin_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/admin.service */ "./src/app/services/admin.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -391,24 +529,23 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var UsersComponent = /** @class */ (function () {
-    function UsersComponent() {
+    function UsersComponent(adminService) {
+        this.adminService = adminService;
         this.settings = {
+            mode: 'external',
             columns: {
                 id: {
                     title: 'ID',
                     filter: false
                 },
-                nom: {
-                    title: ' nom',
+                name: {
+                    title: ' name',
                     filter: false
                 },
-                prenom: {
-                    title: 'prenom',
-                    filter: false
-                },
-                pass: {
-                    title: 'pass',
+                lastname: {
+                    title: 'lastname',
                     filter: false
                 },
                 email: {
@@ -418,15 +555,22 @@ var UsersComponent = /** @class */ (function () {
             }
         };
         this.data = [
-            { 'id': 1,
+            {
+                'id': 1,
                 'nom': 'chehir',
                 'prenom': 'dhwedi',
                 'pass': 'fivepts',
                 'email': 'fivepoints.com',
             }
         ];
-        this.source = new ng2_smart_table__WEBPACK_IMPORTED_MODULE_1__["LocalDataSource"](this.data);
     }
+    UsersComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.adminService.getUserByRole('user').subscribe(function (res) {
+            _this.data = res.json();
+            _this.source = new ng2_smart_table__WEBPACK_IMPORTED_MODULE_1__["LocalDataSource"](_this.data);
+        });
+    };
     UsersComponent.prototype.onSearch = function (query) {
         if (query === void 0) { query = ''; }
         this.source.setFilter([
@@ -453,13 +597,17 @@ var UsersComponent = /** @class */ (function () {
             }
         ], false);
     };
+    UsersComponent.prototype.createBtn = function (event) {
+        console.log(event);
+        console.log("event");
+    };
     UsersComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-users',
             template: __webpack_require__(/*! ./users.component.html */ "./src/app/admin/users/users.component.html"),
             styles: ["\n    nb-card {\n      transform: translate3d(0, 0, 0);\n    }\n  "],
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_admin_service__WEBPACK_IMPORTED_MODULE_2__["AdminService"]])
     ], UsersComponent);
     return UsersComponent;
 }());
@@ -490,12 +638,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _admin_users_users_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./admin/users/users.component */ "./src/app/admin/users/users.component.ts");
 /* harmony import */ var _user_list_list_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./user/list/list.component */ "./src/app/user/list/list.component.ts");
 /* harmony import */ var _user_reservation_ecran_reservation_ecran_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./user/reservation-ecran/reservation-ecran.component */ "./src/app/user/reservation-ecran/reservation-ecran.component.ts");
+/* harmony import */ var _admin_admins_admins_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./admin/admins/admins.component */ "./src/app/admin/admins/admins.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -534,6 +684,10 @@ var routes = [{
     {
         path: 'users',
         component: _admin_users_users_component__WEBPACK_IMPORTED_MODULE_9__["UsersComponent"]
+    },
+    {
+        path: 'admins',
+        component: _admin_admins_admins_component__WEBPACK_IMPORTED_MODULE_12__["AdminsComponent"]
     },
     {
         path: 'historique',
@@ -657,12 +811,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_admin_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./services/admin.service */ "./src/app/services/admin.service.ts");
 /* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./services/user.service */ "./src/app/services/user.service.ts");
 /* harmony import */ var ng2_smart_table__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ng2-smart-table */ "./node_modules/ng2-smart-table/index.js");
+/* harmony import */ var _admin_admins_admins_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./admin/admins/admins.component */ "./src/app/admin/admins/admins.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -705,7 +861,8 @@ var AppModule = /** @class */ (function () {
                 _admin_reservations_reservations_component__WEBPACK_IMPORTED_MODULE_15__["ReservationsComponent"],
                 _admin_ecrans_ecrans_component__WEBPACK_IMPORTED_MODULE_16__["EcransComponent"],
                 _admin_offres_offres_component__WEBPACK_IMPORTED_MODULE_18__["OffresComponent"],
-                _user_reservation_ecran_reservation_ecran_component__WEBPACK_IMPORTED_MODULE_14__["ReservationEcranComponent"]
+                _user_reservation_ecran_reservation_ecran_component__WEBPACK_IMPORTED_MODULE_14__["ReservationEcranComponent"],
+                _admin_admins_admins_component__WEBPACK_IMPORTED_MODULE_25__["AdminsComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -1134,53 +1291,60 @@ var AdminService = /** @class */ (function () {
         this.http = http;
     }
     AdminService.prototype.getAllUser = function () {
-        var url = 'http://137.117.132.180:3000/api/listuser/list';
+        var url = 'http://localhost:3000/api/listuser/list';
         return this.http.get(url);
     };
     AdminService.prototype.AddnewUser = function (user) {
-        var url = 'http://137.117.132.180:3000/api/listuser/insert';
+        var url = 'http://localhost:3000/api/listuser/insert';
         return this.http.post(url, user);
     };
     AdminService.prototype.AddUser = function (user) {
-        var url = 'http://137.117.132.180:3000/api/listuser/update';
+        var url = 'http://localhost:3000/api/listuser/update';
         return this.http.put(url, user);
     };
     AdminService.prototype.delUser = function (user) {
-        var url = 'http://137.117.132.180:3000/api/listuser/delete';
+        var url = 'http://localhost:3000/api/listuser/delete';
         return this.http.delete(url, user);
     };
     AdminService.prototype.getUserByUser = function (_idUser) {
-        var url = 'http://137.117.132.180:3000/api/listuser/idUser';
+        var url = 'http://localhost:3000/api/listuser/idUser';
         return this.http.get(url, _idUser);
     };
     AdminService.prototype.getAllEcrans = function () {
-        var url = 'http://137.117.132.180:3000/api/ecrans';
+        var url = 'http://localhost:3000/api/ecrans';
         return this.http.get(url);
     };
     AdminService.prototype.AddnewEcran = function (ecran) {
-        var url = 'http://137.117.132.180:3000/api/ecrans';
+        var url = 'http://localhost:3000/api/ecrans';
         return this.http.post(url, ecran);
     };
     AdminService.prototype.getEcranById = function (_idEcran) {
-        var url = 'http://137.117.132.180:3000/api/ecrans/' + _idEcran;
+        var url = 'http://localhost:3000/api/ecrans/' + _idEcran;
+        return this.http.get(url);
+    };
+    AdminService.prototype.deleteEcran = function (_idEcran) {
+        var url = 'http://localhost:3000/api/ecrans/delete/' + _idEcran;
         return this.http.get(url);
     };
     AdminService.prototype.getEcranByUser = function (_idUser) {
-        var url = 'http://137.117.132.180:3000/api/ecrans/idUser';
+        var url = 'http://localhost:3000/api/ecrans/idUser';
         return this.http.get(url, _idUser);
     };
     /* GET reservation by userId */
     AdminService.prototype.getReservationByUser = function (_idUser) {
-        var url = 'http://137.117.132.180:3000/api/reservations/byUser/idUser';
+        var url = 'http://localhost:3000/api/reservations/byUser/idUser';
         return this.http.get(url, _idUser);
     };
     AdminService.prototype.getlistReservation = function () {
-        var url = 'http://137.117.132.180:3000/api/reservations/';
+        var url = 'http://localhost:3000/api/reservations/';
         return this.http.get(url);
     };
     AdminService.prototype.UpdateReservationEtat = function (id, reser) {
-        var url = 'http://137.117.132.180:3000/api/reservations/' + id;
+        var url = 'http://localhost:3000/api/reservations/' + id;
         return this.http.put(url, reser);
+    };
+    AdminService.prototype.getUserByRole = function (role) {
+        return this.http.get('http://localhost:3000/api/listuser/' + role);
     };
     AdminService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -1223,11 +1387,11 @@ var AuthService = /** @class */ (function () {
         this.http = http;
     }
     AuthService.prototype.loginUser = function (loginUser) {
-        var url = 'http://137.117.132.180:3000/auth/login';
+        var url = 'http://localhost:3000/auth/login';
         return this.http.post(url, loginUser);
     };
     AuthService.prototype.getregister = function (user) {
-        return this.http.post('http://137.117.132.180:3000/auth/register', user);
+        return this.http.post('http://localhost:3000/auth/register', user);
     };
     AuthService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -1254,6 +1418,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserService", function() { return UserService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm5/http.js");
+/* harmony import */ var angular2_jwt_simple__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! angular2-jwt-simple */ "./node_modules/angular2-jwt-simple/index.js");
+/* harmony import */ var angular2_jwt_simple__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(angular2_jwt_simple__WEBPACK_IMPORTED_MODULE_2__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1265,27 +1431,30 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var UserService = /** @class */ (function () {
     function UserService(http) {
         this.http = http;
     }
     UserService.prototype.addReservation = function (reservation) {
-        var url = 'http://137.117.132.180:3000/api/reservations';
+        var url = 'http://localhost:3000/api/reservations';
         return this.http.post(url, reservation);
     };
     UserService.prototype.listReservation = function () {
-        var url = 'http://137.117.132.180:3000/api/reservations';
+        var url = 'http://localhost:3000/api/reservations';
         return this.http.get(url);
     };
     UserService.prototype.getlistReservationByUser = function () {
-        var url = 'http://137.117.132.180:3000/api/reservations/user_id';
+        var token = localStorage.getItem('token');
+        var _id = angular2_jwt_simple__WEBPACK_IMPORTED_MODULE_2__["decode"](token, 'my_pass')._id;
+        var url = 'http://localhost:3000/api/reservations/byUser/' + _id;
         return this.http.get(url);
     };
     UserService.prototype.getEcrans = function () {
-        return this.http.get('http://137.117.132.180:3000/api/ecrans');
+        return this.http.get('http://localhost:3000/api/ecrans');
     };
     UserService.prototype.getEcranById = function (idEcran) {
-        return this.http.get('http://137.117.132.180:3000/api/ecrans/' + idEcran);
+        return this.http.get('http://localhost:3000/api/ecrans/' + idEcran);
     };
     UserService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -1396,7 +1565,7 @@ module.exports = "\r\nheader.masthead {\r\n  position: relative;\r\n  overflow: 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<app-menu-user></app-menu-user>\n\n\n<section>\n  <div class=\"container\">\n    <div class=\"row align-items-center\">\n      <div class=\"p-5\">\n        <div>\n          <div class=\"container-cards\">\n\n            <div class=\"card-item\" *ngFor=\"let ecran of ecrans\">\n              <div class=\"card\" routerLink=\"/reservation/1\">\n                <img class=\"card-img-top\" src=\"http://placehold.it/700x400\" alt=\"Card image cap\">\n                <div class=\"card-body\">\n                  <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n                </div>\n              </div>\n\n            </div>\n\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n<mat-paginator [length]=\"100\"\n              [pageSize]=\"10\"\n              [pageSizeOptions]=\"[5, 10, 25, 100]\">\n</mat-paginator>\n"
+module.exports = "<app-menu-user></app-menu-user>\n\n\n<section>\n  <div class=\"container\">\n    <div class=\"row align-items-center\">\n      <div class=\"p-5\">\n        <div>\n          <div class=\"container-cards\">\n\n            <div class=\"card-item\" *ngFor=\"let reservation of reservations\">\n              <div class=\"card\"  >\n                <img class=\"card-img-top\" src=\"http://placehold.it/700x400\" alt=\"Card image cap\">\n                <div class=\"card-body\">\n                  <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n                </div>\n              </div>\n\n            </div>\n\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</section>\n<mat-paginator [length]=\"100\"\n              [pageSize]=\"10\"\n              [pageSizeOptions]=\"[5, 10, 25, 100]\">\n</mat-paginator>\n"
 
 /***/ }),
 
@@ -1411,6 +1580,7 @@ module.exports = "<app-menu-user></app-menu-user>\n\n\n<section>\n  <div class=\
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ListComponent", function() { return ListComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/user.service */ "./src/app/services/user.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1421,11 +1591,18 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var ListComponent = /** @class */ (function () {
-    function ListComponent() {
-        this.ecrans = [1, 1, 1, 1, 1];
+    function ListComponent(userService) {
+        this.userService = userService;
+        this.reservations = [1, 1, 1, 1, 1];
     }
     ListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.userService.getlistReservationByUser().subscribe(function (res) {
+            console.log(res.json());
+            _this.reservations = res.json();
+        });
     };
     ListComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -1433,7 +1610,7 @@ var ListComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./list.component.html */ "./src/app/user/list/list.component.html"),
             styles: [__webpack_require__(/*! ./list.component.css */ "./src/app/user/list/list.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]])
     ], ListComponent);
     return ListComponent;
 }());
