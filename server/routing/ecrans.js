@@ -16,6 +16,11 @@ router.get('/:id', async (req, res) => {
   res.send(ecran);
 });
 
+router.get('/delete/:id', async (req, res) => {
+  const ecran = await EcransModel.deleteOne({_id:req.params.id}).exec();
+  res.send(ecran);
+});
+
 router.post('/', async (req, res) => {
   await EcransModel(req.body).save(err => {
     if (err) {

@@ -20,7 +20,7 @@
           <button mat-icon-button (click)="ecranEditBtn(ecran._id)" data-toggle="modal" data-target="#exampleModalEdit">
             <mat-icon>create</mat-icon>
           </button>
-          <button mat-icon-button color="warn">
+          <button mat-icon-button color="warn" (click)="ecranDelBtn(ecran._id)">
             <mat-icon>delete</mat-icon>
           </button>
         </th>

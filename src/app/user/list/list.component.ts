@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-list',
@@ -6,11 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
- ecrans = [1, 1, 1, 1, 1];
+  reservations = [1, 1, 1, 1, 1];
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.getlistReservationByUser().subscribe(res => {
+      console.log(res.json());
+      this.reservations = res.json();
+    });
   }
 
 }

@@ -11,6 +11,7 @@ import { UsersComponent } from './admin/users/users.component';
 import { ListComponent } from './user/list/list.component';
 import { MenuAdminComponent } from './admin/menu-admin/menu-admin.component';
 import { ReservationEcranComponent } from './user/reservation-ecran/reservation-ecran.component';
+import { AdminsComponent } from './admin/admins/admins.component';
 
 const routes: Routes = [{
   path: 'register',
@@ -40,6 +41,10 @@ const routes: Routes = [{
 {
   path: 'users',
   component: UsersComponent
+},
+{
+  path: 'admins',
+  component: AdminsComponent
 },
 {
   path: 'historique',

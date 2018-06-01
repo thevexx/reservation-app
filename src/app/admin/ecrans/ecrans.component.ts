@@ -42,6 +42,14 @@ export class EcransComponent implements OnInit {
     this.adminService.getEcranById(id).subscribe(res => {
       console.log(res.json());
       this.ecranToEdit = res.json();
+      this.ngOnInit();
+    });
+  }
+
+  ecranDelBtn(id) {
+     this.adminService.deleteEcran(id).subscribe(res => {
+      console.log(res.json());
+      this.ngOnInit();
     });
   }
 

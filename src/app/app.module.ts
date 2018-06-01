@@ -27,6 +27,7 @@ import { MaterialModule } from './material.module';
 import { AdminService } from './services/admin.service';
 import { UserService } from './services/user.service';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { AdminsComponent } from './admin/admins/admins.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
     ReservationsComponent,
     EcransComponent,
     OffresComponent,
-    ReservationEcranComponent
+    ReservationEcranComponent,
+    AdminsComponent
   ],
   imports: [
     BrowserModule,

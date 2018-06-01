@@ -1,25 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
 import { LocalDataSource } from 'ng2-smart-table';
-import { UserService } from '../../services/user.service';
 import { AdminService } from '../../services/admin.service';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styles: [`
-    nb-card {
-      transform: translate3d(0, 0, 0);
-    }
-  `],
+  selector: 'app-admins',
+  templateUrl: './admins.component.html',
+  styleUrls: ['./admins.component.css']
 })
-export class UsersComponent implements OnInit {
+export class AdminsComponent implements OnInit {
 
 
 
   settings = {
-    mode: 'external',
     columns: {
       id: {
         title: 'ID',
@@ -57,7 +49,7 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.adminService.getUserByRole('user').subscribe(res => {
+    this.adminService.getUserByRole('admin').subscribe(res => {
       this.data = res.json();
       this.source = new LocalDataSource(this.data);
     });
@@ -88,9 +80,5 @@ export class UsersComponent implements OnInit {
       }
     ], false);
   }
-  createBtn(event) {
-    console.log(event);
-    console.log("event");
 
-  }
 }

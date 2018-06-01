@@ -19,6 +19,10 @@ router.post('/insert',async (req, res) => {
   const user = await UsersModel.find()
 })
 
+router.get('/:role', async (req, res) => {
+  const users = await UsersModel.find({role:req.params.role}).exec();
+  res.send(users);
+});
 
 
 // router.delete('/delete/:id', (req, res) => {

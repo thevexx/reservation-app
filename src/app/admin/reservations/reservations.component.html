@@ -7,6 +7,7 @@
         <th scope="col">Date de reservation</th>
         <th scope="col">Date de debut</th>
         <th scope="col">Date de Fin</th>
+        <th scope="col">client</th>
       </tr>
     </thead>
     <tbody>
@@ -14,17 +15,18 @@
         <th scope="row" style="width: 110px;">
 
           <button mat-icon-button (click)="reservationAcceptBtn(reservation._id)" data-toggle="modal" data-target="#exampleModalEdit">
-            <mat-icon>create</mat-icon>
+            <mat-icon>done</mat-icon>
 
           </button>
           <button mat-icon-button color="warn" (click)="reservationRefusedBtn(reservation._id)">
-            <mat-icon>delete</mat-icon>
+            <mat-icon>clear</mat-icon>
           </button>
         </th>
         <td>{{reservation.etat}}</td>
         <td>{{reservation.dateRes  | date:'fullDate'}}</td>
         <td>{{reservation.dateDebut  | date:'fullDate'}}</td>
         <td>{{reservation.dateFin | date:'fullDate'}}</td>
+        <td>{{ reservation.idUser.name }} {{ reservation.idUser.lastname }}</td>
       </tr>
 
 
